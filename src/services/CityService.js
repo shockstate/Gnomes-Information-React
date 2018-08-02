@@ -7,21 +7,15 @@ export class CityService{
         this._inhabitants = [];
     }
 
-    // get inhabitants(){
-    //     let that = this;
-    //     return new Promise((resolve, reject) => {
-    //         this.getAllGnomes().then(function() {
-    //           if(that._inhabitants.length>0){
-    //             resolve(this._inhabitants);
-    //           }
-    //           else{
-    //             reject('Error');
-    //           }
-    //         });
-    //       })
-    // }
+    get averageWeight(){
+        var avgWeight = 0;
+        for (let i =0; i<this._inhabitants.length;++i){
+            avgWeight += this._inhabitants[i].weight;
+        }
+        return avgWeight/this._inhabitants.length;
+    }
 
-    getAllGnomes(){
+    getAllInhabitants(){
         let that = this;
         return new Promise((resolve, reject) => {
             $.getJSON(that._inhabitantsUrl, function (data) {
@@ -30,6 +24,17 @@ export class CityService{
             });
             
         });
+    }
+
+    orderBy(typeOfOrder){
+        // if(typeOfOrder.type==='single'){
+        //     this._inhabitants.sort(function(a, b){
+        //         return a[typeOfOrder.name]-b[typeOfOrder.name]});
+        // }
+        // else if(typeOfOrder.type==='multi'){
+
+        // }
+        return this._inhabitants;
     }
 
 }

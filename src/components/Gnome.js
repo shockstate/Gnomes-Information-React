@@ -1,15 +1,25 @@
+import React from 'react';
 import {Inhabitant} from './Inhabitant.js';
 
 export class Gnome extends Inhabitant {
     constructor(props) {
         super(props);
         this.state = {
+            knowledge : this.calcKnowledge()
         }
     }
     render() {
         return(
-            super.render()
+            <div>
+                {super.render()}
+                {this.state.knowledge}
+            </div>
+
         )
     }
+
+    calcKnowledge (){
+        return Math.floor(this.props.citizenCharacteristics.age+this.props.citizenCharacteristics.professions.length*10-this.props.citizenCharacteristics.friends.length*10+Math.abs(this.props.cityCharacteristics.averageWeight-this.props.citizenCharacteristics.weight)*5);
+           }
 
 }
