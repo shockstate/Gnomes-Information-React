@@ -1,13 +1,22 @@
 import React from 'react';
-import $ from 'jquery';
+import {CityService} from '../services/CityService.js';
+import {Gnome} from './Gnome.js';
+
 
 export class City extends React.Component {
     constructor(props) {
         super(props);
+        this._GnomesService = new CityService(this.props.city);
         this.state = {
             gnomes : []
         }
-        this.getAllGnomes();
+        let that = this;
+        this._GnomesService.getAllGnomes().then(function(data){
+            that.setState({
+                gnomes : data
+            });
+        }); 
+
     }
     render() {
         return(
@@ -16,25 +25,12 @@ export class City extends React.Component {
                 <button onClick={e => { this.props.returnToBoard();}} key={'backButton'}>
                 Go back to board!
                 </button>
-                {this.state.gnomes.map(function  (gnome) {
-                    return  <div> {gnome.name} </div>
+                {this.state.gnomes.map(function (gnome) {
+                    return  <Gnome characteristics={gnome}> </Gnome>
                     })
                 }
             </div>
         )
-    }
-
-    getAllGnomes() {
-        let that = this;
-        console.log(this.props);
-        $.getJSON(that.props.city.url, function (data) {
-            console.log(data);
-            that.setState({
-                gnomes: data[that.props.city.name]
-            })
-            console.log(that.state);
-        });
-
     }
 
 }
