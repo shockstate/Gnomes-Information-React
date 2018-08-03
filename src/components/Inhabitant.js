@@ -10,10 +10,9 @@ export class Inhabitant extends React.Component {
     render() {
         return(
             <div>
-                <div> {this.props.citizenCharacteristics.name}
-                </div>
-                age: <div> {this.props.citizenCharacteristics.age}
-                </div>
+                <h5 className="card-title">
+                    {this.props.citizenCharacteristics.name}
+                </h5>
             </div>
         )
 

@@ -29,17 +29,31 @@ export class CityService{
     orderBy(typeOfOrder){
          if(typeOfOrder.type==='single'){
              this._inhabitants.sort(function(a, b){
-                 if(a[typeOfOrder.name]-b[typeOfOrder.name]==0)
-                    return a['name']>b['name'];
+
+                //should distintc between type of int or type of string in the future
+                 if(a[typeOfOrder.property]-b[typeOfOrder.property]===0){
+                    if (a['name'] < b['name']) //sort string ascending
+                    return -1;
+                   if (a['name'] > b['name'])
+                    return 1;
+                    return 0;
+                 }
                 else
-                    return a[typeOfOrder.name]-b[typeOfOrder.name]});
+                    return a[typeOfOrder.property]-b[typeOfOrder.property]});
          }
          else if(typeOfOrder.type==='multi'){
             this._inhabitants.sort(function(a, b){
-                if(a[typeOfOrder.name].length-b[typeOfOrder.name].length==0)
-                   return a['name']>b['name'];
+                if(a[typeOfOrder.property].length-b[typeOfOrder.property].length===0){
+                    // var result = a['property']>b['property'];
+                    if (a['name'] < b['name']) //sort string ascending
+                    return -1;
+                   if (a['name'] > b['name'])
+                    return 1;
+                    return 0;
+                //     return result;
+                }
                else
-                   return a[typeOfOrder.name].length-b[typeOfOrder.name].length});
+                   return a[typeOfOrder.property].length-b[typeOfOrder.property].length});
          }
         return this._inhabitants;
     }

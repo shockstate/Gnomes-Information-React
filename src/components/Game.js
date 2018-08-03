@@ -9,22 +9,26 @@ const cities = [
         race: 'gnomes',
         orderList: [
             {
-                name: 'knowledge',
+                property: 'knowledge',
+                name: 'Knowledge',
                 goldCost: 120,
                 type: 'single' 
             },
             {
-                name: 'professions',
+                property: 'professions',
+                name: 'Nº professions',
                 goldCost: 50,
                 type: 'multi'
             },
             {
-                name: 'friends',
+                property: 'friends',
+                name: 'Nº friends',
                 goldCost: 70,
                 type: 'multi'
             },
             {
-                name: 'age',
+                property: 'age',
+                name: 'Age',
                 goldCost: 20,
                 type: 'single'
             },
@@ -53,7 +57,7 @@ export class Game extends React.Component {
         this.state = {
             actualView : 'board',
             playerName : 'PaquitoElProgramador',
-            totalCoins : 150
+            totalGold : 1000
         }
         console.log();
     }
@@ -66,21 +70,24 @@ export class Game extends React.Component {
           ));
           return(
             <div>
-                <div style={{width:"100%", height:"50px", position:"relative"}}>
-                    <span style={{left:"0", position:"absolute"}}>
+                <div className="customHeader">
+                    <div className="headerComponent">
                         Player: {this.state.playerName}
-                    </span>
-                    <span style={{right:"0", position:"absolute"}}>
-                        Gold: {this.state.totalCoins}
-                    </span>
+                    </div>
+                    <div className="headerComponent">
+                        <h4>Role adventures with gnomes and other creatures</h4>
+                    </div>
+                    <div className="headerComponent">
+                        Gold: {this.state.totalGold}
+                    </div>
                 </div>
                 <div>
                 {
-                    this.state.actualView=='board' ? 
+                    this.state.actualView==='board' ? 
                         <div>
                             {buttonsOfCities}
                         </div> :
-                        <City city={this.state.actualCity} returnToBoard={this.returnToBoard}>
+                        <City city={this.state.actualCity} returnToBoard={this.returnToBoard} spendGold={this.spendGold}>
                         </City>
                 }
                 </div>
@@ -90,7 +97,7 @@ export class Game extends React.Component {
     }
 
     _selectCity(city) {
-        if(city.url!=''){
+        if(city.url!==''){
             this.setState({
                 actualCity : city,
                 actualView : 'city'
@@ -100,6 +107,14 @@ export class Game extends React.Component {
     returnToBoard = () =>{
         this.setState({
             actualView : 'board'
+        })
+    }
+    spendGold = (goldSpent) =>{
+        var a = this.state.totalGold - goldSpent;
+        if (a<0)
+            a=0;
+        this.setState({
+            totalGold : a 
         })
     }
 

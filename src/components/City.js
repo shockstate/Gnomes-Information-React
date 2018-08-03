@@ -31,31 +31,38 @@ export class City extends React.Component {
     render() {
         let that = this;
         const buttonsToOrder = this.props.city.orderList.map(typeOfOrder => (
-            <button /*style={someStyle}*/ onClick={e => { this._orderByType(typeOfOrder); }} key={typeOfOrder.name}>
+            <button  className="btn btn-secondary" onClick={e => { this._orderByType(typeOfOrder); }} key={typeOfOrder.name}>
                {typeOfOrder.name}  ({typeOfOrder.goldCost} gold)
             </button >
           ));
 
         return(
             <div>
-                <div>{this.props.city.name}</div>
-                <button onClick={e => { this.props.returnToBoard();}} key={'backButton'}>
-                    Go back to board!
-                </button>
-                <div>
-                    Order by:
+                <div className="title">
+                        <span onClick={e => { this.props.returnToBoard();}} key={'backButton'} className="glyphicon glyphicon-chevron-left backImg"></span>
+                    {/* <button >
+                        Go back to board!
+                    </button> */}
+                    <span >{this.props.city.name}</span>
                 </div>
-                <div>
-                    {buttonsToOrder}
+                <div className="customBar">
+                    <div className="barComponent">
+                        Order by:
+                    </div>
+                    <div className="btn-group barComponent" role="group" aria-label="Order by">
+                        {buttonsToOrder}
+                    </div>
                 </div>
-                <div className="container">
+
+                <div className="d-flex flex-wrap responsiveCont">
                     {this.state.inhabitants.map(function (inhabitant,index) {
                         switch(that.props.city.race){
                             case('gnomes'):
                                 return  (
-                                <div className="col-sm" key={index}>
                                     <Gnome citizenCharacteristics={inhabitant} cityCharacteristics={that.state.cityCharacteristics} key={index}> </Gnome>
-                                </div> )
+                                 )
+                            default:
+                                 return;
                         }
                     })
                     }
@@ -65,6 +72,7 @@ export class City extends React.Component {
     }
 
     _orderByType(typeOfOrder){
+        this.props.spendGold(typeOfOrder.goldCost);
         this.setState({
             inhabitants : this._InhabitantsService.orderBy(typeOfOrder)
         });

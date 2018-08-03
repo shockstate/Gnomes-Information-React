@@ -10,10 +10,17 @@ export class Gnome extends Inhabitant {
         props.citizenCharacteristics.knowledge = this.calcKnowledge();
     }
     render() {
+        //this card has the colour of each gnome
         return(
-            <div>
-                {super.render()}
-                knowledge: {this.props.citizenCharacteristics.knowledge}
+            <div className="card m-2" style={{border: "2px solid " + this.props.citizenCharacteristics.hair_color}}>
+                    <img className="card-img-top cardImage" src={this.props.citizenCharacteristics.thumbnail} title={this.props.citizenCharacteristics.name} alt="Deleted picture"/>
+                    <div className="card-body">
+                        {super.render()}
+                        <p className="card-text">Knowledge: {this.props.citizenCharacteristics.knowledge} <br/>
+                        Age: {this.props.citizenCharacteristics.age} </p>
+                        <a href="#" className="card-link">Ask for a quest</a>
+                        <a href="#" className="card-link">Details</a>
+                    </div>
             </div>
 
         )
