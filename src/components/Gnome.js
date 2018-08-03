@@ -4,15 +4,16 @@ import {Inhabitant} from './Inhabitant.js';
 export class Gnome extends Inhabitant {
     constructor(props) {
         super(props);
-        this.state = {
-            knowledge : this.calcKnowledge()
-        }
+        // this.state = {
+        //     knowledge : this.calcKnowledge()
+        // }
+        props.citizenCharacteristics.knowledge = this.calcKnowledge();
     }
     render() {
         return(
             <div>
                 {super.render()}
-                {this.state.knowledge}
+                knowledge: {this.props.citizenCharacteristics.knowledge}
             </div>
 
         )

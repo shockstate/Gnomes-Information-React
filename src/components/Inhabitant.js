@@ -9,8 +9,12 @@ export class Inhabitant extends React.Component {
     }
     render() {
         return(
-        <div> {this.props.citizenCharacteristics.name}
-        </div>
+            <div>
+                <div> {this.props.citizenCharacteristics.name}
+                </div>
+                age: <div> {this.props.citizenCharacteristics.age}
+                </div>
+            </div>
         )
 
     }

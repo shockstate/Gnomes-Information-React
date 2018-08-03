@@ -48,13 +48,18 @@ export class City extends React.Component {
                 <div>
                     {buttonsToOrder}
                 </div>
-                {this.state.inhabitants.map(function (inhabitant,index) {
-                    switch(that.props.city.race){
-                        case('gnomes'):
-                            return  <Gnome citizenCharacteristics={inhabitant} cityCharacteristics={that.state.cityCharacteristics} key={index}> </Gnome>
+                <div className="container">
+                    {this.state.inhabitants.map(function (inhabitant,index) {
+                        switch(that.props.city.race){
+                            case('gnomes'):
+                                return  (
+                                <div className="col-sm" key={index}>
+                                    <Gnome citizenCharacteristics={inhabitant} cityCharacteristics={that.state.cityCharacteristics} key={index}> </Gnome>
+                                </div> )
+                        }
+                    })
                     }
-                })
-                }
+                </div>
             </div>
         )
     }

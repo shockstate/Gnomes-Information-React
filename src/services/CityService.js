@@ -27,13 +27,20 @@ export class CityService{
     }
 
     orderBy(typeOfOrder){
-        // if(typeOfOrder.type==='single'){
-        //     this._inhabitants.sort(function(a, b){
-        //         return a[typeOfOrder.name]-b[typeOfOrder.name]});
-        // }
-        // else if(typeOfOrder.type==='multi'){
-
-        // }
+         if(typeOfOrder.type==='single'){
+             this._inhabitants.sort(function(a, b){
+                 if(a[typeOfOrder.name]-b[typeOfOrder.name]==0)
+                    return a['name']>b['name'];
+                else
+                    return a[typeOfOrder.name]-b[typeOfOrder.name]});
+         }
+         else if(typeOfOrder.type==='multi'){
+            this._inhabitants.sort(function(a, b){
+                if(a[typeOfOrder.name].length-b[typeOfOrder.name].length==0)
+                   return a['name']>b['name'];
+               else
+                   return a[typeOfOrder.name].length-b[typeOfOrder.name].length});
+         }
         return this._inhabitants;
     }
 

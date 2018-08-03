@@ -26,7 +26,7 @@ const cities = [
             {
                 name: 'age',
                 goldCost: 20,
-                type: 'multi'
+                type: 'single'
             },
         ]
     },
