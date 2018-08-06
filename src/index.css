@@ -15,6 +15,16 @@
     width: 15%;
 }
 
+.card-city{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.7s;
+    background-color:whitesmoke;
+    padding: 10px 10px 10px 10px;
+    margin: 20px 5px 5px 1px;
+    height: 150px;
+    width: 150px;
+}
+
 @media screen and (max-width: 1200px) {
     .card{
         width: 40%;
@@ -99,4 +109,88 @@
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,120,0,0.6);
+}
+
+.locked {
+    background-image: url(https://image.freepik.com/free-icon/lock-in-a-circle_318-9883.jpg);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+.city1 {
+    background-image: url(http://beyondheroes2.altervista.org/gnomecity.jpg);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+    cursor: pointer;
+
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+.fake-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.cityName {
+    color : red;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
+    font-weight: 900;
+}
+
+.cityNameContainer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageDistribution {
+    margin-top: 100px;
 }

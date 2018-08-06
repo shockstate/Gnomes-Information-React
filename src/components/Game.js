@@ -7,6 +7,7 @@ const cities = [
         name: 'Brastlewark',
         url: 'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json',
         race: 'gnomes',
+        image: 'city1',
         orderList: [
             {
                 property: 'knowledge',
@@ -36,18 +37,21 @@ const cities = [
     },
     {
         name: 'Secret City',
-        url: '',
-        race: 'goblins'
+        url: '-1',
+        race: 'goblins',
+        image: 'locked'
     },
     {
         name: 'Secret City2',
-        url: '',
-        race: 'humans'
+        url: '-1',
+        race: 'humans',
+        image: 'locked'
     },
     {
         name: 'Secret City3',
-        url: '',
-        race: 'gremblins'
+        url: '-1',
+        race: 'gremblins',
+        image: 'locked'
     }
 ];
 
@@ -56,7 +60,7 @@ export class Game extends React.Component {
         super();
         this.state = {
             actualView : 'board',
-            playerName : 'PaquitoElProgramador',
+            playerName : 'Un Programador muy tranquilo',
             totalGold : 1000
         }
         console.log();
@@ -64,9 +68,11 @@ export class Game extends React.Component {
 
     render() {
         const buttonsOfCities = cities.map(city => (
-            <button /*style={someStyle}*/ onClick={e => { this._selectCity(city); }} key={city.name}>
-              { city.name }
-            </button >
+            <div className={"card-city m-2 " + city.image} /*style={someStyle}*/ onClick={e => { this._selectCity(city); }} key={city.name}>
+             <div className="card-body cityNameContainer">
+                <span className="cityName">{ city.name }</span>
+                </div>
+            </div >
           ));
           return(
             <div>
@@ -84,8 +90,10 @@ export class Game extends React.Component {
                 <div>
                 {
                     this.state.actualView==='board' ? 
-                        <div>
-                            {buttonsOfCities}
+                        <div className = "pageDistribution">
+                            <div className="d-flex flex-wrap responsiveCont">
+                                {buttonsOfCities}
+                            </div>
                         </div> :
                         <City city={this.state.actualCity} returnToBoard={this.returnToBoard} spendGold={this.spendGold}>
                         </City>

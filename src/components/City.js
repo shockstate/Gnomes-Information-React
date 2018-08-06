@@ -59,7 +59,7 @@ export class City extends React.Component {
                         switch(that.props.city.race){
                             case('gnomes'):
                                 return  (
-                                    <Gnome citizenCharacteristics={inhabitant} cityCharacteristics={that.state.cityCharacteristics} key={index}> </Gnome>
+                                    <Gnome citizenCharacteristics={inhabitant} cityCharacteristics={that.state.cityCharacteristics} spendGold={that.props.spendGold} key={index}> </Gnome>
                                  )
                             default:
                                  return;
