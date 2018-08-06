@@ -3,7 +3,7 @@ import React from 'react';
 export class GnomeDetails extends React.Component {
 
     render() {
-        //this card has the colour of each gnome
+        //basic modal with the gnome information
         let that = this;
         return (
             <div className="modal fade" id={this.props.gnome.name.replace(/\s/g, '')} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,10 +53,6 @@ export class GnomeDetails extends React.Component {
                                 }
                             </p>
                         </div>
-                        {/* <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
-                        </div> */}
                     </div>
                 </div>
             </div>

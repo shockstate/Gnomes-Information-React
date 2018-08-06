@@ -67,6 +67,7 @@ export class Game extends React.Component {
     }
 
     render() {
+        // buttons to chose which city you want to visit
         const buttonsOfCities = cities.map(city => (
             <div className={"card-city m-2 " + city.image} /*style={someStyle}*/ onClick={e => { this._selectCity(city); }} key={city.name}>
              <div className="card-body cityNameContainer">
@@ -75,6 +76,7 @@ export class Game extends React.Component {
             </div >
           ));
           return(
+              //header with the player/game information, static through both views
             <div>
                 <div className="customHeader">
                     <div className="headerComponent">
@@ -113,6 +115,7 @@ export class Game extends React.Component {
         }
     }
     returnToBoard = () =>{
+        //go back function
         this.setState({
             actualView : 'board'
         })

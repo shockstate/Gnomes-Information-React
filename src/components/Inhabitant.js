@@ -2,6 +2,8 @@ import React from 'react';
 
 
 export class Inhabitant extends React.Component {
+
+    // class used in case we wanted diferent races of inhabitants
     constructor(props) {
         super(props);
         this.state = {

@@ -27,10 +27,10 @@ export class CityService{
     }
 
     orderBy(typeOfOrder){
+        //order the inhabitants property depending of the orded you previously chosed
          if(typeOfOrder.type==='single'){
              this._inhabitants.sort(function(a, b){
-
-                //should distintc between type of int or type of string in the future
+                //should distinct between type of int or type of string in the future
                  if(a[typeOfOrder.property]-b[typeOfOrder.property]===0){
                     if (a['name'] < b['name']) //sort string ascending
                     return -1;
@@ -44,13 +44,11 @@ export class CityService{
          else if(typeOfOrder.type==='multi'){
             this._inhabitants.sort(function(a, b){
                 if(a[typeOfOrder.property].length-b[typeOfOrder.property].length===0){
-                    // var result = a['property']>b['property'];
                     if (a['name'] < b['name']) //sort string ascending
                     return -1;
                    if (a['name'] > b['name'])
                     return 1;
                     return 0;
-                //     return result;
                 }
                else
                    return a[typeOfOrder.property].length-b[typeOfOrder.property].length});

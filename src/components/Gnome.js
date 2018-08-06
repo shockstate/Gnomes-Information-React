@@ -5,12 +5,10 @@ import { GnomeDetails } from './GnomeDetails.js';
 export class Gnome extends Inhabitant {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     knowledge : this.calcKnowledge()
-        // }
         props.citizenCharacteristics.knowledge = this.calcKnowledge();
     }
     render() {
+
         //this card has the colour of each gnome
         return (
             <div className="card m-2" style={{ border: "2px solid " + this.props.citizenCharacteristics.hair_color }}>
@@ -31,9 +29,13 @@ export class Gnome extends Inhabitant {
     }
 
     calcKnowledge() {
+        //custom (and weird) way to calculate the knowledge of the gnome :P
         return Math.floor(this.props.citizenCharacteristics.age + this.props.citizenCharacteristics.professions.length * 10 - this.props.citizenCharacteristics.friends.length * 10 + Math.abs(this.props.cityCharacteristics.averageWeight - this.props.citizenCharacteristics.weight) * 5);
     }
     _completeQuest() {
+
+        //random number generator to chose what action the gnome takes
+
         var x = document.getElementById("snackbar");
         x.className = "show";
         var max = 100;

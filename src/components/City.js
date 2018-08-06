@@ -15,9 +15,14 @@ export class City extends React.Component {
             cityCharacteristics: {}
         }
         let that = this;
+
+        //get all inhabitants
         this._InhabitantsService.getAllInhabitants().then(function(data){
             var actChars = that.state.cityCharacteristics;
+
+            //get custom properties
             actChars.averageWeight = that._InhabitantsService.averageWeight;
+
             that.setState({
                 cityCharacteristics : actChars
             });
@@ -30,6 +35,8 @@ export class City extends React.Component {
     }
     render() {
         let that = this;
+
+        //bar with the diferent sorts you can use to list gnomes
         const buttonsToOrder = this.props.city.orderList.map(typeOfOrder => (
             <button  className="btn btn-secondary" onClick={e => { this._orderByType(typeOfOrder); }} key={typeOfOrder.name}>
                {typeOfOrder.name}  ({typeOfOrder.goldCost} gold)
@@ -39,12 +46,10 @@ export class City extends React.Component {
         return(
             <div>
                 <div className="title">
-                        <span onClick={e => { this.props.returnToBoard();}} key={'backButton'} className="glyphicon glyphicon-chevron-left backImg"></span>
-                    {/* <button >
-                        Go back to board!
-                    </button> */}
-                    <span >{this.props.city.name}</span>
+                        <span onClick={e => { this.props.returnToBoard();}} key={'backButton'} className="glyphicon glyphicon-chevron-left backImg"></span>}
+                        <span >{this.props.city.name}</span>
                 </div>
+
                 <div className="customBar">
                     <div className="barComponent">
                         Order by:
@@ -53,7 +58,7 @@ export class City extends React.Component {
                         {buttonsToOrder}
                     </div>
                 </div>
-
+                
                 <div className="d-flex flex-wrap responsiveCont">
                     {this.state.inhabitants.map(function (inhabitant,index) {
                         switch(that.props.city.race){
