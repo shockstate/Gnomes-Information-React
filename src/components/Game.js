@@ -107,7 +107,7 @@ export class Game extends React.Component {
     }
 
     _selectCity(city) {
-        if(city.url!==''){
+        if(city.url!=='-1'){
             this.setState({
                 actualCity : city,
                 actualView : 'city'
